@@ -38,6 +38,13 @@ lot_summary <- suspension_coil %>% group_by(Manufacturing_Lot) %>%
   summarize(Mean = mean(PSI),Median = median(PSI), Variance = var(PSI), SD = sd(PSI) , .groups = 'keep') 
 head(lot_summary)
 
+#box plot: PSI Lots Combined
+plt1 <- ggplot(suspension_coil,aes(y=PSI)) #import dataset into ggplot2
+plt1 + geom_boxplot() #add boxplot
+
+#box plot: PSI per Lot
+plt2 <- ggplot(suspension_coil,aes(x=Manufacturing_Lot,y=PSI)) #import dataset into ggplot2
+plt2 + geom_boxplot()
 
 
 ### Deliverable 3: T-Tests on Suspension Coils ###
