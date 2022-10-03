@@ -20,7 +20,7 @@ summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_cleara
 
 
 
-### Deliverable 2: Linear Regression to Predict MPG ###
+### Deliverable 2:Create Visualizations for the Trip Analysis ###
 
 # 2. In your MechaCarChallenge.RScript, import and read in the Suspension_Coil.csv file as a table.
 suspension_coil <- read.csv(file='data_sources/Suspension_Coil.csv', check.names = F, stringsAsFactors = F)
@@ -38,3 +38,22 @@ lot_summary <- suspension_coil %>% group_by(Manufacturing_Lot) %>%
   summarize(Mean = mean(PSI),Median = median(PSI), Variance = var(PSI), SD = sd(PSI) , .groups = 'keep') 
 head(lot_summary)
 
+
+
+### Deliverable 3: T-Tests on Suspension Coils ###
+
+# 1. write an RScript using the t.test() function to determine if the PSI across all manufacturing 
+# lots is statistically different from the population mean of 1,500 pounds per square inch.
+?t.test()
+t.test(suspension_coil$PSI,mu=mean(suspension_coil$PSI))
+
+# 2. Next, write three more RScripts in your MechaCarChallenge.RScript using the t.test() function 
+# and its subset() argument to determine if the PSI for each manufacturing lot is statistically 
+# different from the population mean of 1,500 pounds per square inch.
+
+# lot 1 t-test
+t.test(subset(suspension_coil$PSI,suspension_coil$Manufacturing_Lot == "Lot1"),mu=mean(suspension_coil$PSI))
+# lot 2 t-test
+t.test(subset(suspension_coil$PSI,suspension_coil$Manufacturing_Lot == "Lot2"),mu=mean(suspension_coil$PSI))
+# lot 3 t-test
+t.test(subset(suspension_coil$PSI,suspension_coil$Manufacturing_Lot == "Lot3"),mu=mean(suspension_coil$PSI))
