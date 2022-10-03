@@ -52,15 +52,17 @@ plt2 + geom_boxplot()
 # 1. write an RScript using the t.test() function to determine if the PSI across all manufacturing 
 # lots is statistically different from the population mean of 1,500 pounds per square inch.
 ?t.test()
-t.test(suspension_coil$PSI,mu=mean(suspension_coil$PSI))
+t.test(suspension_coil$PSI,mu=1500)
 
 # 2. Next, write three more RScripts in your MechaCarChallenge.RScript using the t.test() function 
 # and its subset() argument to determine if the PSI for each manufacturing lot is statistically 
 # different from the population mean of 1,500 pounds per square inch.
 
 # lot 1 t-test
-t.test(subset(suspension_coil$PSI,suspension_coil$Manufacturing_Lot == "Lot1"),mu=mean(suspension_coil$PSI))
+t.test(subset(suspension_coil,Manufacturing_Lot == "Lot1")$PSI,mu=1500)
+
 # lot 2 t-test
-t.test(subset(suspension_coil$PSI,suspension_coil$Manufacturing_Lot == "Lot2"),mu=mean(suspension_coil$PSI))
+t.test(subset(suspension_coil,Manufacturing_Lot == "Lot2")$PSI,mu=1500)
+
 # lot 3 t-test
-t.test(subset(suspension_coil$PSI,suspension_coil$Manufacturing_Lot == "Lot3"),mu=mean(suspension_coil$PSI))
+t.test(subset(suspension_coil,Manufacturing_Lot == "Lot3")$PSI,mu=1500)
